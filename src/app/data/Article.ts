@@ -2,7 +2,7 @@ export class Article {
   constructor(
     public title: string,
     public slug: string,
-    public auhtor: string,
+    public author: string,
     public pubDate: string,
     public compressedImg: string,
     public thumbnail: string,

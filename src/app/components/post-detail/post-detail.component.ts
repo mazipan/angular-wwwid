@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Article } from '../../data/Article'
+import { Article } from '../../data/article'
 
 @Component({
   selector: 'post-detail',
