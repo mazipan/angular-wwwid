@@ -1,1 +1,8 @@
-I am Home
+<ul>
+  <li *ngFor="let article of articles; let i = index; trackBy:trackBySlug;">
+      <post-detail
+        [isFullContent]="false"
+        [article]="article">
+      </post-detail>
+  </li>
+</ul>

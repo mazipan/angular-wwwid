@@ -5,6 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css']
 })
-export class PostComponent {
+export class PostPage {
   title = 'Post';
 }

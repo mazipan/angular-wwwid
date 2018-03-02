@@ -1,6 +1,6 @@
-<div class="a">
+<div class="a" *ngIf="article.title">
   <a [routerLink]="['/post/' + article.slug]"
-      alt="{{article.title}}"
+      alt="article.title"
       class="c a-title">
     {{ article.title }}
   </a>
@@ -14,13 +14,14 @@
     <div class="a-img" *ngIf="!isFullContent">
       <img src="{{article.compressedImg}}" alt="{{article.title}}" />
     </div>
-    <div class="a-content" innerHTML = "{{ article.content }}"></div>
+    <div class="a-content" innerHTML = "{{ article.content }}" *ngIf="isFullContent"></div>
+    <div class="a-content" innerHTML = "{{ article.contentView }}" *ngIf="!isFullContent"></div>
   </div>
 
   <div class="c a-cats">
     <a *ngFor="let cat of article.categories"
         [routerLink]="['/categories/' + cat]"
-        alt="{{cat}}"
+        alt="cat"
         class="a-cat">
         {{ cat }}
     </a>
