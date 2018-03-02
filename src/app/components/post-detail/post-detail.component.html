@@ -1,0 +1,28 @@
+<div class="a">
+  <a [routerLink]="['/post/' + article.slug]"
+      alt="{{article.title}}"
+      class="c a-title">
+    {{ article.title }}
+  </a>
+
+  <div class="c a-wrap">
+    <span class="a-author">{{ article.author }}</span>
+    <span class="a-pub">{{ article.pubDate }}</span>
+  </div>
+
+  <div class="c a-flex">
+    <div class="a-img" *ngIf="!isFullContent">
+      <img src="{{article.compressedImg}}" alt="{{article.title}}" />
+    </div>
+    <div class="a-content" innerHTML = "{{ article.content }}"></div>
+  </div>
+
+  <div class="c a-cats">
+    <a *ngFor="let cat of article.categories"
+        [routerLink]="['/categories/' + cat]"
+        alt="{{cat}}"
+        class="a-cat">
+        {{ cat }}
+    </a>
+  </div>
+</div>
