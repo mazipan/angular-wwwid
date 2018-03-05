@@ -23,13 +23,11 @@ export class HomePage implements OnInit {
   loadArticles () {
     let _self = this
     const REGEX_FIRST_PARAGRAPH = /<p>.*.<\/p>\n</g
-    console.log('_self: ', this)
-    _self.service.getArticles()
+    _self.service.getObservableArticles()
       .subscribe(
         data => {
           _self.articles = [];
           data['items'].map(item => {
-            console.log("item", item)
             let b = item.link.split('/')
             let slug = b[b.length-1]
 
@@ -51,6 +49,8 @@ export class HomePage implements OnInit {
             });
             _self.articles.push(article);
           })
+          // set back to services
+          _self.service.setArticles(_self.articles)
         },
         err => {
           console.log(err)

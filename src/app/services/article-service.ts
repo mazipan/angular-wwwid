@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Article }    from '../data/article'
 import { Observable } from 'rxjs/Rx'
+import { map } from 'rxjs/operators';
 
 // Import RxJs required methods
 import 'rxjs/add/operator/map'
@@ -13,14 +14,36 @@ const API_URL = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedi
 
 @Injectable()
 export class ArticleService {
+  articles: Article[] = [<Article>({})]
+
   constructor(private http: HttpClient) {}
 
-  getArticles() : Observable<HttpResponse<any>> {
+  getObservableArticles() : Observable<HttpResponse<any>> {
     const self = this
     return this.http.get(API_URL)
       .pipe(
         catchError(this.handleError)
-      );
+      )
+  }
+
+  getArticles() : Article[] {
+    return this.articles
+  }
+
+  setArticles(param: Article[]) {
+    this.articles = param
+  }
+
+  getArticleBySlug(slug: string) : Article {
+    return this.articles.filter((item: Article) => {
+      return item.slug.indexOf(slug) >= 0
+    })[0]
+  }
+
+  getArticlesByCategory(category: string) : Article[] {
+    return this.articles.filter((item: Article) => {
+      return item.categories.includes(category)
+    })
   }
 
   private handleError(error: HttpErrorResponse) {
