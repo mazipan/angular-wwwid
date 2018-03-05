@@ -72,3 +72,11 @@ figcaption{
   clear: both;
   display: table;
 }
+pre {
+  padding: .5em;
+  background-color: #f6f8fa;
+  overflow: auto;
+  border-radius: 0.25em;
+  max-width: 100%;
+  color: #ccc;
+}
