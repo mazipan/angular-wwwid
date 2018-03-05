@@ -1,9 +1,3 @@
-
-.c::after {
-  content: "";
-  clear: both;
-  display: table;
-}
 .a-img img{
   width: 120px;
   height: auto;

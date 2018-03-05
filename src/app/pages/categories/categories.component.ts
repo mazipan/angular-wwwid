@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Article } from '../../data/article';
 
 import { ArticleService } from '../../services/article-service';
+import { RouteService } from '../../services/route-service';
 
 @Component({
   selector: 'categories-page',
@@ -16,16 +17,18 @@ export class CategoriesPage implements OnInit {
 
   constructor (
     private route: ActivatedRoute,
-    private service: ArticleService
+    private articleService: ArticleService,
+    private routeService: RouteService
   ){}
 
   ngOnInit () {
+    this.routeService.setIsHome(false)
     this.categoryId = this.route.snapshot.paramMap.get('categoryId')
     this.loadArticlesByCategory()
   }
 
   loadArticlesByCategory () {
-    this.articles = this.service.getArticlesByCategory(this.categoryId)
+    this.articles = this.articleService.getArticlesByCategory(this.categoryId)
   }
 
   trackBySlug (index:number, article:Article) {

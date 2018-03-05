@@ -5,7 +5,7 @@ import { Article }    from '../../data/article';
 import { FeedResponse } from '../../data/feed-response';
 
 import { ArticleService } from '../../services/article-service';
-import { ObserveOnSubscriber } from 'rxjs/operators/observeOn';
+import { RouteService } from '../../services/route-service';
 
 @Component({
   selector: 'home-page',
@@ -17,19 +17,21 @@ export class HomePage implements OnInit {
   articles: Article[] = [<Article>({})]
 
   constructor (
-    private service: ArticleService
+    private articleService: ArticleService,
+    private routeService: RouteService
   ){}
 
   ngOnInit () {
+    this.routeService.setIsHome(true)
     this.loadArticles()
   }
 
   loadArticles () {
     const _self = this
     // read from cache first
-    let cache: Article[] = _self.service.getArticles();
+    let cache: Article[] = _self.articleService.getArticles();
     if (cache.length <= 0) {
-      _self.service.getObservableArticles()
+      _self.articleService.getObservableArticles()
         .subscribe((data: FeedResponse) => {
             _self.articles = [];
             data.items.map((item: Article) => {
@@ -41,6 +43,8 @@ export class HomePage implements OnInit {
             _self.articles = [];
           }
         )
+    } else {
+      _self.articles = cache;
     }
   }
 

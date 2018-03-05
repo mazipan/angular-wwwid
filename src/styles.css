@@ -3,6 +3,11 @@ body{
   font-family: -apple-system,BlinkMacSystemFont,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
   color: #282828;
   font-size: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 a{
   color: #e33637;
@@ -52,4 +57,18 @@ li{
   border: 0;
   border-bottom: 1px solid #e2d6d6;
   padding: 1em .3em;
+}
+figure img{
+  width: 100%;
+  height: auto;
+}
+figcaption{
+  font-style: italic;
+  text-align: center;
+  color: #ccc;
+}
+.c::after {
+  content: "";
+  clear: both;
+  display: table;
 }

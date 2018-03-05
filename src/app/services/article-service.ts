@@ -9,7 +9,8 @@ import { catchError } from 'rxjs/operators';
 import 'rxjs/add/operator/map'
 // import 'rxjs/add/operator/catch'
 
-import { Article }    from '../data/article'
+import { Article }    from '../data/article';
+import { ArticleCache } from '../data/article-cache';
 import { FeedResponse } from '../data/feed-response';
 
 const CACHE_KEY = 'NGWWWID'
@@ -63,11 +64,11 @@ export class ArticleService {
       // get from cache first
       let cache = localStorage.getItem(CACHE_KEY)
       if (cache) {
-        let cacheParse = JSON.parse(cache)
+        let cacheParse: ArticleCache = JSON.parse(cache)
         let dayNow = new Date().getDay();
         let dayCache = new Date(cacheParse.created).getDay();
         if (dayNow === dayCache) {
-          return cache['data'];
+          return cacheParse.data;
         }
         return []
       } else {
@@ -78,10 +79,10 @@ export class ArticleService {
   }
 
   setArticles(param: Article[]) {
-    let data = {
+    let data = <ArticleCache>({
       created: Date.now(),
       data: param
-    }
+    })
     localStorage.setItem(CACHE_KEY, JSON.stringify(data))
 
     this.articles = param

@@ -18,6 +18,7 @@ import { NotFoundPage } from './page-not-found.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 
 import { ArticleService } from './services/article-service'
+import { RouteService } from './services/route-service'
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ArticleService } from './services/article-service'
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [
-    ArticleService
+    ArticleService,
+    RouteService
   ],
   bootstrap: [AppComponent]
 })
