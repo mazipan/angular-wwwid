@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Article }    from '../../data/article';
 import { ArticleService } from '../../services/article-service';
+import { FeedResponse } from '../../data/feed-response';
 
 @Component({
   selector: 'home-page',
@@ -25,35 +26,15 @@ export class HomePage implements OnInit {
     const REGEX_FIRST_PARAGRAPH = /<p>.*.<\/p>\n</g
     _self.service.getObservableArticles()
       .subscribe(
-        data => {
+        (data: FeedResponse) => {
           _self.articles = [];
-          data['items'].map(item => {
-            let b = item.link.split('/')
-            let slug = b[b.length-1]
-
-            let a = item.content.match(REGEX_FIRST_PARAGRAPH)
-            let contentView = a[0].slice(0, -1)
-                                    .replace('<p>', '<span>')
-                                    .replace('</p>', '</span>')
-
-            let article = <Article>({
-              title: item.title,
-              slug: slug,
-              author: item.author,
-              pubDate: item.pubDate.slice(0, 10),
-              compressedImg: `https://res.cloudinary.com/irfan-maulana/image/fetch/c_fill,g_auto:face,h_120,w_120,fl_force_strip.progressive/f_webp/${item.thumbnail}`,
-              thumbnail: item.thumbnail,
-              content: item.content,
-              contentView: contentView,
-              categories: item.categories
-            });
-            _self.articles.push(article);
+          data.items.map((item: Article) => {
+            _self.articles.push(item);
           })
-          // set back to services
-          _self.service.setArticles(_self.articles)
         },
         err => {
           console.log(err)
+          _self.articles = [];
         })
   }
 
