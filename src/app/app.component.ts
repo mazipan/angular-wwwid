@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewChecked } from '@angular/core';
 import { RouteService } from './services/route-service'
 
 @Component({
@@ -7,13 +7,16 @@ import { RouteService } from './services/route-service'
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements AfterViewChecked{
   isHome: boolean = true
 
-  constructor (private service: RouteService){
+  constructor (
+    private service: RouteService
+  ){}
+
+  ngAfterViewChecked() {
     this.service.isHomeSubject.subscribe(value => {
       this.isHome = value;
-      console.log('changed', this.isHome)
     });
   }
 }
