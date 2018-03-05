@@ -25,8 +25,8 @@
       "type": "image/jpg"
     }
   ],
-  "background_color": "#EEE",
-  "theme_color": "#1565c0",
+  "background_color": "#fff",
+  "theme_color": "#e33637",
   "start_url": "./?utm_source=launcher",
   "display": "standalone",
   "orientation": "any"
