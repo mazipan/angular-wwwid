@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Rx'
+import { Observable, Observer } from 'rxjs/Rx'
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 // import { map } from 'rxjs/operators';
 import { catchError } from 'rxjs/operators';
@@ -12,12 +12,13 @@ import 'rxjs/add/operator/map'
 import { Article }    from '../data/article'
 import { FeedResponse } from '../data/feed-response';
 
+const CACHE_KEY = 'NGWWWID'
 const REGEX_FIRST_PARAGRAPH = /<p>.*.<\/p>\n</g
 const API_URL = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2Fwwwid'
 
 @Injectable()
 export class ArticleService {
-  articles: Article[] = [<Article>({})]
+  articles: Article[] = []
 
   constructor(private http: HttpClient) {}
 
@@ -58,21 +59,42 @@ export class ArticleService {
   }
 
   getArticles() : Article[] {
+    if (this.articles.length <= 0) {
+      // get from cache first
+      let cache = localStorage.getItem(CACHE_KEY)
+      if (cache) {
+        let cacheParse = JSON.parse(cache)
+        let dayNow = new Date().getDay();
+        let dayCache = new Date(cacheParse.created).getDay();
+        if (dayNow === dayCache) {
+          return cache['data'];
+        }
+        return []
+      } else {
+        return []
+      }
+    }
     return this.articles
   }
 
   setArticles(param: Article[]) {
+    let data = {
+      created: Date.now(),
+      data: param
+    }
+    localStorage.setItem(CACHE_KEY, JSON.stringify(data))
+
     this.articles = param
   }
 
   getArticleBySlug(slug: string) : Article {
-    return this.articles.filter((item: Article) => {
+    return this.getArticles().filter((item: Article) => {
       return item.slug.indexOf(slug) >= 0
     })[0]
   }
 
   getArticlesByCategory(category: string) : Article[] {
-    return this.articles.filter((item: Article) => {
+    return this.getArticles().filter((item: Article) => {
       return item.categories.includes(category)
     })
   }

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, Observer } from 'rxjs/Rx'
 
 import { Article }    from '../../data/article';
 import { FeedResponse } from '../../data/feed-response';
 
 import { ArticleService } from '../../services/article-service';
+import { ObserveOnSubscriber } from 'rxjs/operators/observeOn';
 
 @Component({
   selector: 'home-page',
@@ -24,19 +26,22 @@ export class HomePage implements OnInit {
 
   loadArticles () {
     const _self = this
-    const REGEX_FIRST_PARAGRAPH = /<p>.*.<\/p>\n</g
-    _self.service.getObservableArticles()
-      .subscribe(
-        (data: FeedResponse) => {
-          _self.articles = [];
-          data.items.map((item: Article) => {
-            _self.articles.push(item);
-          })
-        },
-        err => {
-          console.log(err)
-          _self.articles = [];
-        })
+    // read from cache first
+    let cache: Article[] = _self.service.getArticles();
+    if (cache.length <= 0) {
+      _self.service.getObservableArticles()
+        .subscribe((data: FeedResponse) => {
+            _self.articles = [];
+            data.items.map((item: Article) => {
+              _self.articles.push(item);
+            })
+          },
+          err => {
+            console.log(err)
+            _self.articles = [];
+          }
+        )
+    }
   }
 
   trackBySlug (index:number, article:Article) {
