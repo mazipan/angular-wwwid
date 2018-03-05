@@ -8,6 +8,7 @@
         "files": [
           "/manifest.json",
           "/ngsw-worker.js",
+          "/ngsw.json",
           "/favicon.ico",
           "/index.html"
         ],
