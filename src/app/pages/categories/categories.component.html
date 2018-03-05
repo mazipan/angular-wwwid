@@ -1,1 +1,10 @@
-I am Categories
+<h3>Articles in category <b>{{ categoryId }}</b></h3>
+
+<ul>
+  <li *ngFor="let article of articles; let i = index; trackBy:trackBySlug;">
+      <post-detail
+        [isFullContent]="false"
+        [article]="article">
+      </post-detail>
+  </li>
+</ul>

@@ -10,8 +10,8 @@ import { NotFoundPage } from './page-not-found.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomePage },
-  { path: 'categories/:id', component: CategoriesPage },
-  { path: 'post/:id', component: PostPage },
+  { path: 'categories/:categoryId', component: CategoriesPage },
+  { path: 'post/:slug', component: PostPage },
   { path: 'about', component: AboutPage },
   { path: '**', pathMatch: 'full', component: NotFoundPage }
 ];

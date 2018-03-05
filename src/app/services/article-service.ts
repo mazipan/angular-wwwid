@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core'
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { Article }    from '../data/article'
 import { Observable } from 'rxjs/Rx'
-import { map } from 'rxjs/operators';
+import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+// import { map } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
 // Import RxJs required methods
 import 'rxjs/add/operator/map'
-import 'rxjs/add/operator/catch'
-import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
-import { catchError } from 'rxjs/operators';
+// import 'rxjs/add/operator/catch'
+
+import { Article }    from '../data/article'
 import { FeedResponse } from '../data/feed-response';
 
 const REGEX_FIRST_PARAGRAPH = /<p>.*.<\/p>\n</g

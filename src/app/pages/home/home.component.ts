@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Article }    from '../../data/article';
-import { ArticleService } from '../../services/article-service';
 import { FeedResponse } from '../../data/feed-response';
+
+import { ArticleService } from '../../services/article-service';
 
 @Component({
   selector: 'home-page',
@@ -22,7 +23,7 @@ export class HomePage implements OnInit {
   }
 
   loadArticles () {
-    let _self = this
+    const _self = this
     const REGEX_FIRST_PARAGRAPH = /<p>.*.<\/p>\n</g
     _self.service.getObservableArticles()
       .subscribe(
