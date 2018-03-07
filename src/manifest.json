@@ -27,7 +27,7 @@
   ],
   "background_color": "#fff",
   "theme_color": "#e33637",
-  "start_url": "./?utm_source=launcher",
+  "start_url": "/?utm_source=launcher",
   "display": "standalone",
   "orientation": "any"
 }

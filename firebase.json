@@ -1,0 +1,34 @@
+{
+  "hosting": {
+    "public": "dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/e2e/**",
+      "**/src/**",
+      "gh-pages.js",
+      "karma.conf.js",
+      "package-lock.js",
+      "package.json",
+      "protractor.conf.js",
+      "LICENSE",
+      "prebuild.js",
+      "README.md",
+      "screenshoot.png",
+      "tsconfig.json",
+      "tslint.json",
+      "yarn.lock"
+    ],
+    "headers": [
+      {
+        "source" : "**/*.@(js|css|jpg|jpeg|gif|png|ico)",
+        "headers" : [ {
+          "key" : "Cache-Control",
+          "value" : "max-age=7200"
+        }]
+      }
+    ]
+  }
+}
