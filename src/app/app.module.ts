@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
-import { ServiceWorkerModule } from '@angular/service-worker';
 import { RouterModule, Routes } from '@angular/router';
 
 import { environment } from '../environments/environment';
@@ -34,8 +33,7 @@ import { RouteService } from './services/route-service'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
+    HttpClientModule
   ],
   providers: [
     ArticleService,
