@@ -17,8 +17,8 @@ import { NotFoundPage } from './page-not-found.component';
 
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 
-import { ArticleService } from './services/article-service'
-import { RouteService } from './services/route-service'
+import { ArticleService } from './services/article-service';
+import { RouteService } from './services/route-service';
 
 @NgModule({
   declarations: [

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Observer } from 'rxjs/Rx'
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 
-import { Article }    from '../../data/article';
+import { Article } from '../../data/article';
 import { FeedResponse } from '../../data/feed-response';
 
 import { ArticleService } from '../../services/article-service';
