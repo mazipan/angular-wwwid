@@ -1,4 +1,4 @@
-import { Article } from '../data/article';
+import { Article } from './article';
 
 export class ArticleCache {
   constructor(

@@ -1,5 +1,5 @@
-import { Feed } from '../data/feed';
-import { Article } from '../data/article';
+import { Feed } from './feed';
+import { Article } from './article';
 
 export class FeedResponse {
   constructor(
