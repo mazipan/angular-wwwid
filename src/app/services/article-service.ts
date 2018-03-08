@@ -1,21 +1,21 @@
-import { Injectable } from '@angular/core'
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { Observable, Observer } from 'rxjs/Rx'
+import { Observable, Observer } from 'rxjs/Rx';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 // import { map } from 'rxjs/operators';
 import { catchError } from 'rxjs/operators';
 
 // Import RxJs required methods
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
 // import 'rxjs/add/operator/catch'
 
-import { Article }    from '../data/article';
+import { Article } from '../data/article';
 import { ArticleCache } from '../data/article-cache';
 import { FeedResponse } from '../data/feed-response';
 
-const CACHE_KEY = 'NGWWWID'
-const REGEX_FIRST_PARAGRAPH = /<p>.*.<\/p>\n</g
-const API_URL = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2Fwwwid'
+const CACHE_KEY = 'NGWWWID';
+const REGEX_FIRST_PARAGRAPH = /<p>.*.<\/p>\n</g;
+const API_URL = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2Fwwwid';
 
 @Injectable()
 export class ArticleService {
