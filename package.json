@@ -9,7 +9,6 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "node ./gh-pages.js",
     "workbox-build": "node ./workbox-build.js"
   },
   "private": true,
@@ -37,7 +36,6 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~9.4.6",
     "codelyzer": "^4.2.1",
-    "gh-pages": "^1.1.0",
     "jasmine-core": "~3.1.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~2.0.0",
