@@ -6,6 +6,6 @@ branches:
 before_script:
    - npm install -g --silent firebase-tools
 script:
-  - npm run build
+  - npm run workbox-build
 after_success:
   - firebase deploy --token $FIREBASE_TOKEN
