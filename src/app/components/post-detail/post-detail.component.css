@@ -25,23 +25,17 @@
   margin-bottom: 1em;
 }
 .a-author, .a-pub{
-  color: #ccc;
+  line-height: 2;
   font-size: .9rem;
-}
-.a-author{
-  float: left;
-}
-.a-pub{
-  float: right;
 }
 .a-content{
   font-size: 1rem;
-  color: #6d6565;
-  width: 100%;
+  width: 90%;
+  margin: auto;
 }
 .a-cat{
   color: #e33637;
-  background-color: #eee;
+  background-color: #000;
   border-radius: 2px;
   padding: 5px;
   line-height: 2.2;

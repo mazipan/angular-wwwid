@@ -1,18 +1,20 @@
 <div class="a" *ngIf="article.title">
   <a [routerLink]="['/post/' + article.slug]"
-      alt="article.title"
       class="c a-title">
     {{ article.title }}
   </a>
 
   <div class="c a-wrap">
     <span class="a-author">{{ article.author }}</span>
-    <span class="a-pub">{{ article.pubDate }}</span>
+    <span class="a-pub"> at {{ article.pubDate }}</span>
   </div>
 
   <div class="c a-flex">
     <div class="a-img" *ngIf="!isFullContent">
-      <img src="{{article.compressedImg}}" alt="{{article.title}}" />
+      <img alt="{{article.title}}"
+          [defaultImage]="defaultImage"
+          [lazyLoad]="article.compressedImg"
+          [offset]="200"/>
     </div>
     <div class="a-content" innerHTML = "{{ article.content }}" *ngIf="isFullContent"></div>
     <div class="a-content" innerHTML = "{{ article.contentView }}" *ngIf="!isFullContent"></div>
@@ -21,7 +23,6 @@
   <div class="c a-cats">
     <a *ngFor="let cat of article.categories"
         [routerLink]="['/categories/' + cat]"
-        alt="cat"
         class="a-cat">
         {{ cat }}
     </a>

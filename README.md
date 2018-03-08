@@ -4,7 +4,16 @@
 
 ## Live Demo
 
-https://angular-wwwid.netlify.com/
+https://angular-id-rssfeed.firebaseapp.com/
+
+## Medium Article
+
+## Technology
+
+- Angular v5.2.8
+- Typescript v2.5.3
+- Workbox v2.1.3
+- Firebase Hosting
 
 ## Screenshoot
 
@@ -12,6 +21,7 @@ https://angular-wwwid.netlify.com/
 
 ## Webpagetest Easy Result
 
-https://www.webpagetest.org/result/180305_2P_315595bb965014f2bf3a4c1b6b9dc32c/
+https://www.webpagetest.org/result/180308_YB_53796ed3fc154d3f3aec46f8cce009de/
+
 
 Copyright © 2018 Built with ❤️ for 🇮🇩 by Irfan Maulana

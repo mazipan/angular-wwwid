@@ -1,5 +1,5 @@
-import { Feed } from "./feed";
-import { Article } from "./article";
+import { Feed } from './feed';
+import { Article } from './article';
 
 export class FeedResponse {
   constructor(

@@ -59,13 +59,16 @@ li{
   padding: 1em .3em;
 }
 figure img{
-  width: 100%;
+  text-align: center;
+}
+figure img{
+  width: 80%;
   height: auto;
 }
 figcaption{
   font-style: italic;
   text-align: center;
-  color: #ccc;
+  font-size: .8em;
 }
 .c::after {
   content: "";
@@ -76,7 +79,10 @@ pre {
   padding: .5em;
   background-color: #f6f8fa;
   overflow: auto;
-  border-radius: 0.25em;
-  max-width: 100%;
-  color: #ccc;
+  max-width: 90%;
+  margin: auto;
+}
+.content{
+  margin: 70px 0;
+  width: 100%;
 }

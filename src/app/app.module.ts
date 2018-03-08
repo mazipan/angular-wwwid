@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
-import { ServiceWorkerModule } from '@angular/service-worker';
 import { RouterModule, Routes } from '@angular/router';
+
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
@@ -17,8 +17,8 @@ import { NotFoundPage } from './page-not-found.component';
 
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 
-import { ArticleService } from './services/article-service'
-import { RouteService } from './services/route-service'
+import { ArticleService } from './services/article-service';
+import { RouteService } from './services/route-service';
 
 @NgModule({
   declarations: [
@@ -28,14 +28,13 @@ import { RouteService } from './services/route-service'
     PostPage,
     AboutPage,
     NotFoundPage,
-
     PostDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
+    LazyLoadImageModule
   ],
   providers: [
     ArticleService,
