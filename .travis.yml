@@ -4,7 +4,6 @@ branches:
    only:
       - workbox-sw
 before_script:
-   - npm install -g --silent @angular/cli
    - npm install -g --silent firebase-tools
 script:
   - npm run build
