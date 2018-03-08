@@ -23,9 +23,9 @@ https://angular-id-rssfeed.firebaseapp.com/
 
 ## Webpagetest Easy Result
 
-https://www.webpagetest.org/result/180308_YB_53796ed3fc154d3f3aec46f8cce009de/
+https://www.webpagetest.org/result/180308_ZH_1b7210fee887c5b224460c9c4f840c68/
 
-https://www.webpagetest.org/result/180308_DH_d8c3ac61f09884abb47fddd81f49c70c/
+![result](https://raw.githubusercontent.com/mazipan/angular-wwwid/master/result.png)
 
 
 Copyright © 2018 Built with ❤️ for 🇮🇩 by Irfan Maulana
