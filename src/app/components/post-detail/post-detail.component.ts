@@ -8,9 +8,11 @@ import { Article } from '../../data/article';
 })
 export class PostDetailComponent {
 
-    defaultImage = 'assets/launcher-icon-3x.jpg';
-    // props required
-    @Input() isFullContent: boolean = false;
+    defaultImage: String =
+      'https://res.cloudinary.com/irfan-maulana/image/fetch/c_fill,g_auto:face,h_120,w_120,fl_force_strip.progressive/f_webp/https://angular-id-rssfeed.firebaseapp.com/assets/launcher-icon-3x.jpg';
+
+      // props required
+    @Input() isFullContent: Boolean = false;
     @Input() article: Article = null;
 
 }
