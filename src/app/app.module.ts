@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
 import { RouterModule, Routes } from '@angular/router';
+
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
@@ -27,13 +28,13 @@ import { RouteService } from './services/route-service'
     PostPage,
     AboutPage,
     NotFoundPage,
-
     PostDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    LazyLoadImageModule
   ],
   providers: [
     ArticleService,

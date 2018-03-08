@@ -8,6 +8,7 @@ import { Article } from '../../data/article'
 })
 export class PostDetailComponent {
 
+    defaultImage = 'https://www.placecage.com/1000/1000';
     // props required
     @Input() isFullContent: boolean = false;
     @Input() article: Article = null;

@@ -8,13 +8,16 @@ const input = {
   globDirectory: BUILD_DIR,
   manifestDest: `${BUILD_DIR}/manifest.js`,
   globPatterns: [
-    '**/*.{js,png,ico,svg,html,css}',
-    'assets/**/*',
+    '**/*.{js,png,ico,svg,html,css}'
   ],
   globIgnores: [
     'package.json',
     'index.js',
-    'sw.js'
+    'sw.js',
+    'assets/launcher-icon-2x.jpg',
+    'assets/launcher-icon-3x.jpg',
+    'assets/launcher-icon-4x.jpg',
+    'assets/ng.png'
   ],
   format: 'iife',
   maximumFileSizeToCacheInBytes: 4000000
