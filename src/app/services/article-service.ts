@@ -20,27 +20,25 @@ const API_URL = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedi
 
 @Injectable()
 export class ArticleService {
-  articles: Article[] = []
+  articles: Article[] = [];
 
   constructor(private http: HttpClient) {}
 
-  getObservableArticles() : Observable<FeedResponse> {
-    const self = this
+  getObservableArticles(): Observable<FeedResponse> {
+    const self = this;
     return this.http.get(API_URL)
       .map((response: FeedResponse) => {
         response.items = response.items.map((item: Article) => {
-          let b = item.link.split('/')
-          let slug = b[b.length-1]
-
-          let a = item.content.match(REGEX_FIRST_PARAGRAPH)
-          let contentView = a[0].slice(0, -1)
+          const a = item.content.match(REGEX_FIRST_PARAGRAPH);
+          const contentView = a[0].slice(0, -1)
                                   .replace('<p>', '<span>')
-                                  .replace('</p>', '</span>')
+                                  .replace('</p>', '</span>');
+          const b = item.link.split('/');
 
-          let article = <Article>({
+          const article = <Article>({
             title: item.title,
             link: item.link,
-            slug: slug,
+            slug: b[b.length - 1],
             author: item.author,
             pubDate: item.pubDate.slice(0, 10),
             compressedImg: `https://res.cloudinary.com/irfan-maulana/image/fetch/c_fill,g_auto:face,h_120,w_120,fl_force_strip.progressive/f_webp/${item.thumbnail}`,
@@ -49,56 +47,56 @@ export class ArticleService {
             contentView: contentView,
             categories: item.categories
           });
-          return article
+          return article;
         })
         // set to articles local
         this.setArticles(response.items);
-        return response
+        return response;
       })
       .pipe(
         catchError(this.handleError)
-      )
+      );
   }
 
-  getArticles() : Article[] {
+  getArticles(): Article[] {
     if (this.articles.length <= 0) {
       // get from cache first
-      let cache = localStorage.getItem(CACHE_KEY)
+      const cache = localStorage.getItem(CACHE_KEY);
       if (cache) {
-        let cacheParse: ArticleCache = JSON.parse(cache)
-        let dayNow = new Date().getDay();
-        let dayCache = new Date(cacheParse.created).getDay();
+        const cacheParse: ArticleCache = JSON.parse(cache);
+        const dayNow = new Date().getDay();
+        const dayCache = new Date(cacheParse.created).getDay();
         if (dayNow === dayCache) {
           return cacheParse.data;
         }
-        return []
+        return [];
       } else {
-        return []
+        return [];
       }
     }
-    return this.articles
+    return this.articles;
   }
 
   setArticles(param: Article[]) {
-    let data = <ArticleCache>({
+    const data = <ArticleCache>({
       created: Date.now(),
       data: param
-    })
+    });
     localStorage.setItem(CACHE_KEY, JSON.stringify(data))
 
-    this.articles = param
+    this.articles = param;
   }
 
-  getArticleBySlug(slug: string) : Article {
+  getArticleBySlug(slug: string): Article {
     return this.getArticles().filter((item: Article) => {
-      return item.slug.indexOf(slug) >= 0
-    })[0]
+      return item.slug.indexOf(slug) >= 0;
+    })[0];
   }
 
-  getArticlesByCategory(category: string) : Article[] {
+  getArticlesByCategory(category: string): Article[] {
     return this.getArticles().filter((item: Article) => {
       return item.categories.includes(category)
-    })
+    });
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -115,6 +113,6 @@ export class ArticleService {
     // return an ErrorObservable with a user-facing error message
     return new ErrorObservable(
       'Something bad happened; please try again later.');
-  };
+  }
 
 }

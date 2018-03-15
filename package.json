@@ -5,11 +5,11 @@
   "scripts": {
     "ng": "./node_modules/.bin/ng",
     "start": "ng serve",
+    "workbox-build": "node ./workbox-build.js",
     "build": "ng build --prod && npm run workbox-build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "workbox-build": "node ./workbox-build.js"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {

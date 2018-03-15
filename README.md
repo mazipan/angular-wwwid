@@ -8,7 +8,15 @@ https://angular-id-rssfeed.firebaseapp.com/
 
 ## Medium Article
 
-*in progress*
+https://medium.com/angularid/angular-untuk-wwwid-rss-reader-cepat-secara-default-16f404c75781
+
+## Challenge Information
+
+https://medium.com/wwwid/tantangan-web-developer-untuk-membuat-aplikasi-web-bisa-digunakan-kurang-dari-5-detik-70bb7431741d
+
+## API End Point
+
+https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2Fwwwid
 
 ## Technology
 

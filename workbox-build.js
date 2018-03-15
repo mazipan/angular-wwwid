@@ -23,6 +23,4 @@ const input = {
   maximumFileSizeToCacheInBytes: 4000000
 };
 
-workboxBuild.injectManifest(input).then(() => {
-  console.log('The production manifest for pre-cache has been created with a precache list.');
-});
+workboxBuild.injectManifest(input);
