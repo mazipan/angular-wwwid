@@ -1,4 +1,4 @@
-# ⚡️ Angular-WWWID
+# 🅰️ Angular-WWWID
 
 > Angular PWA WWWID RSS Reader
 
